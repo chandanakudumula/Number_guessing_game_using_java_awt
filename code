@@ -1,0 +1,196 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.*;
+class Main extends JFrame implements ActionListener{
+	JButton b1,b2,b3,b4,b5;
+    JTextField tx,tx1,tx2,tx3;
+    JLabel l1,l2,l3,l4,l5;
+    Container c;
+    int hintno;
+    int number = 1 + (int)(100* Math.random());
+
+    Main()
+    {
+        c=getContentPane();
+        c.setBackground(Color.white);
+        c.setLayout(null);
+
+        l1=new JLabel("Enter a number b/w range(1-100)");
+        l1.setBounds(10,50,190,50);
+        l1.setForeground(Color.black);
+        c.add(l1);
+        
+        l3=new JLabel("NUMBER GUESSING GAME");
+        l3.setBounds(200,0,225,50);
+        l3.setForeground(Color.blue);
+        c.add(l3);
+        
+        l5=new JLabel("Enter hint number:");
+        l5.setBounds(50,280,150,50);
+        l5.setForeground(Color.black);
+        c.add(l5);
+        
+        l4=new JLabel();
+        l4.setIcon(new ImageIcon("C:\\Users\\srinu\\Desktop\\game icon              guessing.png"));
+        l4.setBounds(800,40,200,300);
+        l4.setForeground(Color.black);
+        c.add(l4);
+
+        tx=new JTextField();
+        tx.setBounds(226,60,500,30);
+        c.add(tx);
+
+        l2=new JLabel("ANSWER OR HINT");
+        l2.setBounds(10,100,150,50);
+        l2.setForeground(Color.black);
+        c.add(l2);
+        
+        tx1=new JTextField();
+        tx1.setBounds(226,110,500,30);
+        c.add(tx1);
+        
+        tx2=new JTextField();
+        tx2.setBounds(200,300,500,30);
+        c.add(tx2);
+        
+        tx3=new JTextField();
+        tx3.setBounds(200,350,500,30);
+        c.add(tx3);
+        
+
+        b1=new JButton("CHECK");
+        b1.addActionListener((ActionListener) this);
+        b1.setBounds(100,200,90,50);
+        c.add(b1);
+
+        b2=new JButton("CANCEL");
+        b2.addActionListener((ActionListener) this);
+        b2.setBounds(250,200,90,50);
+        c.add(b2);
+        
+        b3=new JButton("HINT");
+        b3.addActionListener((ActionListener) this);
+        b3.setBounds(400,200,90,50);
+        c.add(b3);
+        
+        b4=new JButton("SCORE");
+        b4.addActionListener((ActionListener) this);
+        b4.setBounds(119,329,80,50);
+        c.add(b4);
+    }
+    public void actionPerformed(ActionEvent ae)
+    {
+      	String str=ae.getActionCommand();
+      	int no;
+        int get;
+        int s=100;
+    
+      	if(str=="CHECK")
+        {
+            no=Integer.parseInt(tx.getText());
+            if(no==number)
+            {
+                tx1.setText(no+"correct guess");
+            }
+            else
+            {
+                tx1.setText(no+"wrong guess(use hints)");
+            }
+        }
+        
+        if(str=="CANCEL")
+        {
+            System.exit(0);
+        }
+        if(str=="SCORE")
+        { 
+        	get=Integer.parseInt(tx2.getText());
+        	no=Integer.parseInt(tx.getText());
+        	if(no==number)
+        	{
+          if(get==0)
+          {
+        	  tx3.setText("100");
+          }
+          else if(get==1)
+          {
+        	  tx3.setText("90");
+          }
+          else if(get==2)
+          {
+        	  tx3.setText("80");
+          }
+          else if(get==3)
+          {
+        	  tx3.setText("65");
+          }
+          else if(get==4)
+          {
+        	  tx3.setText("50");
+          }
+          else if(get==5)
+          {
+        	  tx3.setText("20");
+          }
+        	}
+        }
+        if(str=="HINT")
+        {
+        	get=Integer.parseInt(tx2.getText());
+        	{
+       if(get==1)
+       {
+    	   tx1.setText("if we divide guessing number with 2, we get "+number%2+" as remainder");
+        }
+       if(get==2)
+        {tx1.setText("if we multiply guessing number with 9, we get "+number*9+" as product");
+        }
+        if(get==3)
+        { 
+        	tx1.setText("if we divide guessing number with 3, we get "+number%3+" as remainder");
+       }
+        if(get==4)
+       {
+      	   tx1.setText("The square of guessing number is "+number*number);
+       }
+         if(get==5)
+       {
+	  if(number>50)
+	  {
+		  tx1.setText("The guessing number above 50");  
+	  }
+	  else
+	  {
+		  tx1.setText("The guessing number below 50");
+	  }
+     }
+   }
+        }  }
+}
+public class Evencheck
+{
+    public static void main(String args[])
+    {
+        Main f=new Main();
+
+        f.setTitle("NUMBER GUESSING GAME");
+        f.setSize(1100,1000);
+        f.setVisible(true);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
