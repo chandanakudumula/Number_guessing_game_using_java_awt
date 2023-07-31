@@ -32,7 +32,7 @@ class Main extends JFrame implements ActionListener{
         c.add(l5);
         
         l4=new JLabel();
-        l4.setIcon(new ImageIcon("C:\\Users\\srinu\\Desktop\\game icon              guessing.png"));
+        l4.setIcon(new ImageIcon("file location of image"));
         l4.setBounds(800,40,200,300);
         l4.setForeground(Color.black);
         c.add(l4);
